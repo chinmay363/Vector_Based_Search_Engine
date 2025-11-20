@@ -13,7 +13,7 @@ SQL_FILE_PATH = 'Search_Engine_db.sql'
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '1234',
+    'password': '',
     'database': 'search_engine',
     'autocommit': False
 }
