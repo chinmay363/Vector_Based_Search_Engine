@@ -1,0 +1,7 @@
+mysql-connector-python
+numpy
+sentence-transformers
+scikit-learn
+regex
+torch
+transformers
