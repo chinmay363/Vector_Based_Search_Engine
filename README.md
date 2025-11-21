@@ -21,7 +21,7 @@ git clone https://github.com/chinmay363/Vector_Based_Search_Engine.git
 ### Install the required dependencies:
 
 ```python
-pip install -r requirements.txt </code>
+pip install -r requirements.txt 
 ```
 
 ### Start a local instance of a MySQL server on your system and run this in the terminal (enter your MySQL password if prompted):
