@@ -23,6 +23,14 @@ git clone https://github.com/chinmay363/Vector_Based_Search_Engine.git
 ```python
 pip install -r requirements.txt 
 ```
+### Create a .env file in the project root in the following format with your database credentials:
+
+```sql
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=search_engine
+```
 
 ### Start a local instance of a MySQL server on your system and run this in the terminal (enter your MySQL password if prompted):
 
@@ -30,7 +38,7 @@ pip install -r requirements.txt
 mysql -u root -p < Search_Engine_db.sql
 ```
 
-### Verify your database credentials in the Search_Engine.py file and then run:
+### Run the python file:
 
 ```python
 python search_engine.py
