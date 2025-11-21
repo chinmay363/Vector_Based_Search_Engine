@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # ---------- CONFIG ----------
-SQL_FILE_PATH = 'Search_Engine_db.sql'
+SQL_FILE_PATH = 'Vector_Based_Search_Engine\Search_Engine_db.sql'
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
