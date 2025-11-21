@@ -81,7 +81,8 @@ INSERT IGNORE INTO document(document_id, author, content, title, upload_date) VA
 (13, 'Christopher Moore', 'Cybersecurity in database systems and data encryption mechanisms.', 'Database Security', '2023-11-20'),
 (14, 'Sarah Thompson', 'Optimization of SQL queries using cost-based optimization techniques.', 'SQL Optimization', '2023-11-25'),
 (15, 'Andrew White', 'AI-assisted query generation using natural language interfaces.', 'AI Query Systems', '2023-11-30');
-
+ 
+-- TRIGGER TO DELETE RELATED EMBEDDINGS, TERMS, AND SEARCH RESULTS WHEN A DOCUMENT IS DELETED
 DELIMITER $$
 CREATE TRIGGER trg_delete_doc_cascade
 AFTER DELETE ON document
@@ -93,6 +94,7 @@ BEGIN
 END$$
 DELIMITER ;
 
+-- TRIGGER TO DELETE RELATED EMBEDDINGS, TERMS, AND SEARCH RESULTS WHEN A DOCUMENT IS UPDATED
 DELIMITER $$
 CREATE TRIGGER trg_update_doc_remove_embedding
 AFTER UPDATE ON document
@@ -114,6 +116,7 @@ INSERT IGNORE INTO search_result(query_id, sr_rank, document_id, score) VALUES
 (1, 2, 2, 0.7),
 (2, 1, 3, 0.8);
 
+-- FUNCTION TO GET MAX SCORE FOR A QUERY
 DELIMITER $$
 CREATE FUNCTION fn_max_score(q_id INT) RETURNS FLOAT
 DETERMINISTIC
@@ -124,6 +127,7 @@ BEGIN
 END$$
 DELIMITER ;
 
+-- FUNCTION TO COUNT DOCUMENTS ABOVE A THRESHOLD SCORE
 DELIMITER $$
 CREATE FUNCTION fn_count_docs_above(q_id INT, thresh FLOAT) RETURNS INT
 DETERMINISTIC
@@ -151,7 +155,7 @@ WHERE document_id IN (
     SELECT document_id FROM term WHERE term_text = 'database'
 );
 
--- JOIN QUERY
+-- JOIN 
 SELECT d.document_id, d.title, e.embedding_id, e.dimension
 FROM document d 
 JOIN embedding e ON d.document_id = e.document_id 

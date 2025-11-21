@@ -4,17 +4,22 @@ import hashlib
 import mysql.connector
 import numpy as np
 import re
+import warnings
+from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+warnings.filterwarnings("ignore")
+
 # ---------- CONFIG ----------
-SQL_FILE_PATH = 'Vector_Based_Search_Engine\Search_Engine_db.sql'
+SQL_FILE_PATH = 'Vector_Based_Search_Engine/Search_Engine_db.sql'
+load_dotenv()
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',
-    'database': 'search_engine',
+    'host': os.getenv("DB_HOST"),
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD"),
+    'database': os.getenv("DB_NAME"),
     'autocommit': False
 }
 DEFAULT_TOP_K = 5
